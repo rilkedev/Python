@@ -327,3 +327,31 @@ else:
 #		
 #print("Thanks for driving!"); 
 
+
+====================================================================================================================
+My Rendition of Mosh's Guessing Game:
+
+response = input(">")
+if response == "help":
+    print(
+    '''
+    start - start the car
+    stop - stop the car 
+    done - quit application
+    '''
+ ) 
+    response = input(">")
+    while (response.lower() != "done"): 
+        if(response.lower() == "start"):
+            print("Ready to go!"); 
+        elif(response.lower() == "stop"):
+            print("Car has stopped");
+        else:
+            print("I don't understand..");  
+        response = input(">");
+else: 
+    print("prompt response not recognized, valid option is help");
+
+print("Thank you for using the program!");
+
+====================================================================================================================
