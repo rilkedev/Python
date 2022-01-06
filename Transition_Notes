@@ -88,3 +88,242 @@ elif age < 5:
 else:
     print("you are an alien"); 
 =========================================================================================================================
+
+#Convert Weight to Kg Method 1 -- 
+#weight = input("Enter weight "); 
+#result = float(weight) / 2.205; 
+
+#print("Result: " + str(result)); 
+
+
+#Convert Weight to kg Method 2 -- 
+#weight = float( input("Enter Weight ")); 
+#weight = str(weight / 2.205); 
+#print("Result: " + weight); 
+
+
+#Strings: Getting character at index --
+#name = "John Boyde"; 
+#random_letter = name[2],
+#print(random_letter); 
+#could have also done print(name[2]); 
+
+#NOTE: name[-3] returns third character from the end! SO, stringName[-x] = xth char from end. 
+
+#Slicer -> prints from index1:index2, excludes
+#index 2. 
+#statement = "Python for Beginners"; 
+#sliced = statement[0: 3]; 
+#print(sliced); 
+
+#Slicer to return from specified index to end of string 
+#moving = "python"
+#slicer = moving[2:]
+#print(slicer); 
+
+#Slicer to return string up to index specified but excluding index itself 
+#random_string = "jennifer"; 
+#slicer = random_string[: 4]
+#print(slicer); 
+
+#Middle elements of String (excluding ends) 
+#myString = "pythonic"; 
+#slicer = myString[1: -1]; 
+#print(slicer); 
+
+#Find the index at which a word begins:
+#prints two because love word begins at index 2
+#sentence = "I love java way too much"; 
+#result = sentence.find("love"); 
+#print(result); 
+
+#replace word
+#mySentence = "I hate dogs"; 
+#new_String = mySentence.replace("hate", "love");
+#print(new_String); 
+#outputs I love dogs
+
+#replace letter, same idea: 
+#myWord = "Python"; 
+#new_string = myWord.replace("P" , "J"); 
+#print(new_string); 
+
+
+#basic logical branch
+#age = 10; 
+#if age > 5 and age < 7:
+#		print("toddler"); 
+#elif age == 10: 
+#	print("you are 10"); 
+#else : 
+#	print("catch all other instances")
+
+#Logical branch example, More Complex---
+#price = 1000000; 
+#good_credit = False; 
+#down = 0; 
+#note, 10% of price is 0.1 * price, and 20% of price is 0.2 * price 
+
+#answer =int(input("Enter one for good good credit and two for bad credit")); 
+
+#if answer == 1: 
+#	good_credit = True; 
+#elif answer == 2: 
+#	good_credit = False; 
+#else: 
+#	print("Answer must be 1 or 2"); 
+#	
+#if good_credit: 
+#	down = 0.1 * price; 
+#else: 
+#	down = 0.2 * price; 
+#	
+#print("Your down payment is: " + str(down)); 
+
+#Eligible for loan: if has high_income and good_credit then print eligible. 
+#will print not eligible 
+#high_income = True; 
+#good_credit= False;   
+
+#if high_income and good_credit: 
+#	print("Eligible"); 
+#else: 
+#	print("Not Eligible"); 
+#	
+
+
+#Eligible for Loan 2: if has high income OR good credit (either or both.. so at least one), print eligible otherwise not eligible 
+#high_income = True; 
+#good_credit = True; 
+
+#if high_income and good_credit:
+#	print("eligible"); 
+#else:
+#print("not eligible"); 
+
+#Eligible for Loan 3: using not operator 
+#if person has criminal record and high_income, do not give loan 
+#high_income = True;
+#criminal_record = True; 
+
+#if high_income and not criminal_record:
+#	print("Eligible") 
+#else:
+#	print("Not Eligible")
+
+
+#Temperature Excersise: 
+#temp = int(input("Enter Temperature: ")); 
+
+#if temp > 30:
+#	print("It's a hot day"); 
+#elif temp < 10:
+#	print("it's a cold day"); 
+#else:
+#	print("neither cold nor hot"); 
+
+#Auth excerise 
+#If chars less than 3, print must be more than 3.
+#if chars greater than 50, must be less than 50. 
+#name = input("Enter Name "); 
+#if len(name) < 3: 
+#    print("Name must be greater than three characters"); 
+#elif len(name) > 50: 
+#       print("Name cannot exceed 50 characters"); 
+#else: 
+#       print("Name saved!"); 
+
+
+#Weight Calculator Revisited: 
+#Ask for weight, ask if in l or k (irrespective of upper or lowercase) and then return their weight in the opposite unit. 
+
+#weight = float(input("Enter Weight ")); 
+
+#letter = input("(L)bs or (K)g ");  
+
+#kilograms = True; 
+
+#if letter.lower() == "l": 
+#	weight = weight/2.205; 
+#	print("You are: " + str(weight) + " " + " Kgs")
+#elif letter.lower() == "k": 
+#	weight = weight*2.205;
+#	print("You are: " + str(weight) + " " + " Lbs")
+	
+
+#While-loop - print hi 5 times 
+
+#i = 0; 
+#while i < 5: 
+#	print("Hello"); 
+#	i += 1; 
+#print("Done"); 
+
+#While loop hi as many times as entered
+#response = int(input("how many times would you like to print hi? ")); 
+
+#i = 0; 
+#while i < response:
+#	print("hi"); 
+#	i += 1; 
+
+#print("done"); 
+
+#guessing game 
+#answer = 5; 
+#response = int(input("Guess: ")); 
+
+#if response != answer:
+#	i = 1; 
+#	while response!= answer:
+#		response = int(input("Guess: ")); 
+#		i += 1; 
+#		if i == 3:
+#			print("Sorry, you failed"); 
+#			break
+#elif response == answer:
+#	print("correct!")
+
+#guessing-game Mosh's version'
+#answer = 5; 
+#guess_attempts = 0; 
+#guess_limit = 3; 
+
+#while guess_attempts < guess_limit:   
+#	response = int(input("Guess: "))
+#	guess_attempts += 1; 
+#	
+#	if guess_attempts == guess_limit: 
+#		print("You have lost!"); 
+#	
+#	if response == 5: 
+#		print("You win"); 
+#		break 
+
+#Mosh game 
+# string.equals equivalent is string1 == string2 
+
+#user_input = input(">"); 
+
+#if user_input.lower() == "help": 
+#			print(
+#		'''
+#		 start - to start the car
+#		 stop - to stop the car
+#		 quit - to exit
+#		 
+#		 ''')
+#			while user_input.lower() != quit:
+#				user_input = input(">"); 
+#				if user_input.lower() == "start":
+#					print("Ready to go!"); 
+#				elif user_input.lower() == "stop":
+#					print("Car stopped!"); 
+#				elif user_input.lower() == "quit": 
+#					break 
+#				else: 
+#					print("I don't understand"); 
+#				
+#		
+#print("Thanks for driving!"); 
+
