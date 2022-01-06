@@ -1,0 +1,90 @@
+Transition Notes: 
+
+=========================================================================================================================
+#Python works with type inference: age = 5, name = "john", valid = false, etc. 
+=========================================================================================================================
+
+=========================================================================================================================
+#cannot have the following: 
+{
+    age = 4; 
+    print("You are " + age);
+    <will throw error, type mismatch> 
+
+    instead, type conversion must be used to convert age to string: (wrap int variable in str(variable_here));  
+    print("You are " str(age)); 
+}
+=========================================================================================================================
+
+
+=========================================================================================================================
+#Upper-case first letter:
+name = "john"; 
+print(name.capitalize);
+
+#Upper-case entire String: 
+name = "john"; 
+print(name.upper()); 
+
+#Lower-case entire String 
+name = "john"
+print(name.lower());
+
+#Counts how many instances of the character is present within the string 
+name = "john"; 
+print(name.count("o")) //will yeild 1 
+
+#Can change all instances of a particular character to whatever is specified: 
+name = "johno"; 
+print(name.replace("o", "a")) -> will output jahno 
+
+#Can print string multiple times 
+name = "john"; 
+print(name*3); //will output johnjohnjohnn;
+
+#String length: 
+name = "john"; 
+print(len(name)); 
+
+#Find character within a String: 
+
+//variableName.find("character"); -> returns index at which character resides. 
+name = "john"; 
+print(name.find("o")); 
+
+
+=========================================================================================================================
+
+Type-casting: 
+
+1) //convert a double to an int 
+scale = 4.0; 
+print(int(scale)); //ouputs 4 .. could have also done scale = int(scale) in line 61 and print(scale). 
+
+2) converting string to int to perform math 
+
+three ways for valid type cast: 
+# number = "4"; 
+# print(number + 2); 
+
+# number = "4"; 
+# number = int(number) + 4; 
+# print(number); 
+
+# number = "4"; 
+# print(int(number) + 4); 
+=========================================================================================================================
+
+
+=========================================================================================================================
+Basic if-else Structure:
+
+age = 10; 
+
+if age == 5: 
+    print("you are an adult") 
+elif age < 5:
+    print("you are not an adult") 
+else:
+    print("you are an alien"); 
+=========================================================================================================================
