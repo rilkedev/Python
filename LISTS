@@ -1,0 +1,220 @@
+========================================================================================================================
+Lists:
+>Use for each loop to iterate over a sequence (list)
+seq = ["girl", "boy", "hybrid"]
+for item in seq:
+   print(item)
+
+>If "A" exists in list, print False.
+list = ["A", "B", "C"]
+bool = True;
+for item in list:
+	if item == "A":
+	bool = False;
+print(bool);
+
+>Access item with index
+list = ["Mary", "Joseph", "Tyler"]
+for index, item in enumerate(list):
+	print(index, item)
+
+> Access items of an index
+list = ["Mary", "Joseph", "Tyler"]
+for index, item in enumerate(list):
+	print(index)
+
+>Length of List and String
+mySeq = [2,3,4,1]
+length = len(mySeq)
+print(length);
+
+> mySeq = ["jerry", "barry", "arnie"]
+length = len(mySeq)
+print(length);
+
+> Sum of sequence using for-each
+sum = 0;
+list = [4, 2, 1, 6];
+for item in list:
+	sum += item;
+print(sum);
+
+> Multiply Lists
+list1 = [3,2,4,1];
+list2 = list1[1:3] *3;
+print(list2);
+//prints [2 4 2 4 2 4]
+
+>Sum of sequence using sum()
+#Sum of list using for-each loop
+list = [4, 2, 1, 6];
+answer = sum(list);
+print(answer);
+
+>Sum of a partial sequence (portion)
+mySeq = [4,2,1,8,3]
+answer = sum(mySeq[1:4])
+print(answer)
+
+>Sum of everything after Xth index
+mySeq = [4,2,1,9];
+answer = sum(mySeq[1:])
+print(answer)
+
+> Count occurence of letter in String
+myString = "Hello";
+num = myString.count("l");
+print(num);
+
+>Count occurence of word in list of Strings
+myList = ["Jerry", "Bob", "Luis", "Jerry"]
+num = myList.count("Jerry");
+print(num)
+
+> Index of first occurance of item
+myStr = "Hippo"
+index = myStr.index("p");
+print(index);
+
+>Index of first occurence of item in list
+list = [4,3,1,9];
+index = list.index(3);
+print(index); 
+
+>Extracting sub-list
+list = [4,2,3,1]
+print(list[0: -1])
+//prints [4,2,3]
+
+>Make a function that takes a list as a parameter and returns the sum
+def count(random_list):
+sum = 0
+for item in random_list:
+	sum += item
+return sum
+
+my_list = [4,2,6]
+sum = count(my_list)
+print(sum)
+
+>append to list
+my_list = [4,2,8]
+my_list.append(9)
+print(my_list
+
+#append a list within a list
+my_list = [4,2,8, "hello"]
+my_list.append([8,8,8])
+print(my_list)
+
+> Remove item from end
+my_list = [4,2,8, "hello"]
+my_list.pop()
+print(my_list)
+//returns [4,2,8]
+
+>Remove at specified index
+list = [4,2,9,1]
+list.remove(2)
+print(list)
+
+> Access any element
+my_list = [4,2,8, "hello"]
+item = my_list[1]
+print(item)
+
+>change content of item in list
+my_list = [4,2,8, "hello"]
+my_list[1] = 4
+print(my_list)
+
+> Q: Given my_list = ["berry", 2, 0] achieve
+[0, 2, "berry"]
+//save first element in temp variable
+//set first to last
+//set last to temp
+//print
+temp = my_list[0]
+my_list[0] = my_list[2]
+my_list[2] = temp
+print(my_list)
+
+> add all numbers that are a multiple of three
+list = [1,2,3,4,5,6,7,8]
+
+total = 0
+for e in list:
+if e % 3 == 0:
+total += e
+print(total)
+
+> add all numbers that are a multiple of three between 1 and 8
+total = 0
+for e in range(1,8):
+if e % 3 == 0:
+total += e
+print(total)
+
+> add all multiples of 3 and 5 that are less than 100
+total = 0
+for e in range(1, 100):
+if e % 3 == 0 or e % 5 == 0:
+total += e
+print(total
+
+> At what index does the value 9 occur
+vals = [4,3,7,8,9,2,1]
+answer = 0
+for index in range(len(vals)):
+if vals[index] == 9:
+answer = index
+break
+print(answer)
+
+> create a function that takes a value and a list, the function will return the index at which it occurs. (first occurance)
+def find_index(random_list, number):
+for index in range(len(random_list)):
+if random_list[index] == number:
+return index
+
+test-case:
+list = [4,9,3,7,1]
+
+x = find_index(list, 3)
+print(x)
+
+NOTE-----------------------------------------------------------------------------------------------------------------------------------
+Iterating over lists and adding elements optimizations:
+
+>Two iteration methods
+1) if you don't specify the list you're iterating over, and only choose a range, item is an index.
+sum = 0;
+list = [3, 3, 3];
+for item in range(0, len(list)):
+sum = sum + list[item];
+print(sum);
+
+2) if you do specify the list you're iterating over, item becomes the actual element.
+seq = [1,1,1,1,2]
+sum = 0
+for item in seq:
+sum = sum + item
+print(sum)
+
+Therefore, since item can act as an index in some cases and an actual item in others, it is beneficial for one to name the "item" component "index" 
+when dealing with figure 1 since item acts as an index in that case.
+
+sum = 0;
+list = [3, 3, 3];
+for index in range(0, len(list)):
+sum = sum + list[index];
+print(sum);
+
+
+Note that the for the range parameters, 0 is implied. Therefore, the syntax can be simplified to:
+sum = 0;
+list = [3, 2, 3];
+for index in range( len(list)):
+sum = sum + list[index];
+print(sum);
+-------------------------------------------------------------------------------------------------------------------------------------------
