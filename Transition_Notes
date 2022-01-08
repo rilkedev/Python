@@ -118,6 +118,17 @@ print(bool)
 string_list = ["jared", "amy", "tony"]
 bool = "jared" in string_list
 print(bool);
+
+
+>Count occurence of letter in String
+myString = "Hello";
+num = myString.count("l");
+print(num);
+
+>Count occurence of word in list of Strings
+myList = ["Jerry", "Bob", "Luis", "Jerry"]
+num = myList.count("Jerry");
+print(num)
 =========================================================================================================================
 
 =========================================================================================================================
