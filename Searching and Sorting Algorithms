@@ -1,0 +1,47 @@
+Binary Search: 
+-------------
+  > Linear Search runs in O(n) time; however, Binary Search runs in constant [O(1)] time. Binary search is only applicable if a list is sorted. 
+  >>  Algorithmic Steps for Binary Search:
+      * Variable "first" set to hold the index of the beginning of the list, 0 
+      * Variable "last" set to hold the index of the last index of the list; the index at the last position will be the length of the list 
+        minus one: len(list)-1 
+      *While-loop condition set to first <= last 
+      *Variable "middle" set to hold the index responsible for the middle element of the list. This will be set to the addition of the first and last index added,
+       then dividing that by 2 (floor division): mid = (first + last)//2 
+      *if target equals list[mid], then return the index at which that occurs (mid)
+      *otherwise (elif), if the list[mid] is less than the target - meaning that the target is greater than the item at the midpoint, discard searching 
+       all elements to the left of the midpoint. Position your "first" pointer to the index immediately following the midpoint: first = midpoint + 1. 
+       We opt for first to hold midpoint + 1 because we know that the item at the midpoint does not equal the target given that if this were the case, then our
+       previous condition [if list[midpoint] == target] would be true, and we'd have returned the midpoint (the index at which this occurs). 
+      *otherwise, (elif) if the list[mindpoint] < target; if the element held at the midpoint is less than the target, discard all elements to the right of 
+       the midpoint, these elements cannot possibly be the item as the target is less than the item at the midpoint. Update last to point to the index which is
+       one less than the midpoint [last = midpoint - 1] 
+       *After the while-loop, return None. If the while-loop does not return a particular index, the item is not contained within the list.
+       
+> Linear Search vs Binary Search (Time & Space Complexity advantages and disadvantages) https://www.curioustem.org/stem-articles/linear-search-vs-binary-search
+> Implementation, recursive and iterative: https://www.geeksforgeeks.org/python-program-for-binary-search/
+
+       
+Question: Implement a function called binary_search which takes in a list and a target as parameters. Construct the function such that 
+it returns the index of the specified target; if the target is not contained within the list, return None.  
+
+def binary_search(list, target):
+    first = 0
+    last = len(list) - 1
+
+    while first <= last:
+        mid = (first + last) // 2
+        if list[mid] == target:
+            return mid
+        elif list[mid] < target:
+            first = mid + 1
+        else:
+            last = mid - 1
+    return None
+
+if __name__ == "__main__":
+    list = [2,6, 3, 4, 1, 5]
+    list.sort()
+    result = binary_search(list, 5)
+    print(str(result))
+
