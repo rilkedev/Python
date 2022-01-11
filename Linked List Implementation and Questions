@@ -192,6 +192,13 @@ prints
 
 
 Implementing prepend(): adding an element to the head. 
+The function prepend is tasked with assigning a new head to the linked list. In haste, we might say that this would be a matter of assigning self.head = new_node,
+however, if the self.head pointer refers to new_node, how will we connect new_node.next = the node that was previously the head? As soon as we assign the
+self.head reference to new_node, we lose reference to the node that self.head was attached to. Of course, the motivation is to assign self.head to new_node, 
+and then connect new_node.next to the node that was the head. However, since this is not possible under the method we outlined before, we will take another 
+approach. We will create a reference called temp, it will equal self.head meaning that temp refers to what self.head refers to. As such, when we set 
+self.head equal to new_node, we can attach new_node.next equal temp so that new_node.next refers to what temp is referring to, and since temp is referring to 
+the node that was previously the head, new_node.next is connected to the now second node in the linked list. 
 
    def prepend(self, data):
         new_node = Node(data)
@@ -200,77 +207,149 @@ Implementing prepend(): adding an element to the head.
         self.head.next = temp
         del temp
         
+Finding the length:
+ def length(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count += 1
+            current = current.next
+        return "Length is: " + str(count)
+        
+ 
+Method to pass in an index and print data at that index:
+    > My implementation (note that whatever is specified in range(here) controls how many times the for-loop executes 
+    
+       def get(self, index):
+        #index of n means I want to iterate n+1 times
+        current = self.head
+        for i in range(index):
+           current = current.next
+        print(current.data)
+        
+ 
+
+   > def get(self, index):
+        if index >= self.length():
+            print("Invalid Index")
+        else:
+            current = self.head
+            itr = 0
+            while itr != index:
+                itr += 1
+                current = current.next
+            return current.data
+
+        
+Method to erase - this is the same as the method to get, however, it stops 1 before the specified index and oversteps the node we need to erase by setting
+current.next to current.next.next (set the current node's next pointer to the next next's property)
+        
+        def erase(self, index):
+          current = self.head
+            itr = 0
+            while itr != index-1:
+                itr += 1
+                current = current.next
+        current.next = current.next.next
         
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-   Where you left out yesterday (successful implementation)     
-        
-        class Node:
+  Matured Code:
+  
+class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
-#
+        
 class LinkedList:
     def __init__(self):
         self.head = None
 
-    def append(self, new_node):
+    def append(self, data):
+        new_node = Node(data)
         if self.head == None:
             self.head = new_node
         else:
-            #traverse until you get to the end of the list, and then make that end-node's "next" property point to the
-            #node you're adding
             current = self.head
-            while current != None:
-                if current.next == None:
-                    current.next = new_node
-                    break
+            while current.next != None:
                 current = current.next
+            current.next = new_node
 
-    def print(self):
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            temp = self.head
+            self.head = new_node
+            self.head.next = temp
+            del temp
+
+    def length(self):
         current = self.head
+        count = 0
         while current != None:
+            count += 1
+            current = current.next
+        return count
+
+    def display(self):
+        current = self.head
+        while current:
             print(current.data)
             current = current.next
 
-N1 = Node("Jerry")
-N2 = Node("Mary")
-N3 = Node("Micheal")
+    def get(self, index):
+        if index >= self.length():
+            print("Invalid Index")
+        else:
+            current = self.head
+            itr = 0
+            while itr != index:
+                itr += 1
+                current = current.next
+            return current.data
+
+    def erase(self, index):
+        current = self.head
+        itr = 0
+        while itr != index-1:
+            itr += 1
+            current = current.next
+        current.next = current.next.next
+
 ll = LinkedList()
-ll.append(N1)
-ll.append(N2)
-ll.append(N3)
+ll.append("Jerry")
+ll.append("Marry")
+ll.append("Emma")
+ll.append("Anne")
+ll.display()
+ll.erase(2)
+print("--------")
+ll.display()
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
-ll.print()
-
-
-    
-    
     
     
     
