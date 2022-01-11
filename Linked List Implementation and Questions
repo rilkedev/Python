@@ -151,6 +151,7 @@ class LinkedList:
      current.next = new_node 
       
  The program has now matured in the following ways: You will notice the creation of a display() function, this iterates in a similar way described above. 
+ Remember that append() and display() incurs a linear cost, in that it runs in order of N, O(N)
     
 
 class Node:
@@ -190,7 +191,14 @@ prints
 2
 
 
+Implementing prepend(): adding an element to the head. 
 
+   def prepend(self, data):
+        new_node = Node(data)
+        temp = self.head
+        self.head = new_node
+        self.head.next = temp
+        del temp
         
         
         
