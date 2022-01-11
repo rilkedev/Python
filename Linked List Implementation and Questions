@@ -72,10 +72,125 @@ class linkedList:
             ll.head is printing out the location to N1, the now head of the linked list. It is not printing out "Jerry" because we have yet to access 
             the data associated with the reference. If we print (ll.head.data), then we are in effect doing N1.data which concludes to "Jerry". 
             
+4) We have continued with the above implementation of the append() function because it demonstrates how we can access nodes directly and through the 
+   linked list that contains it. However, let us digress from this implementation of the append() function because it is not very efficent. The append() 
+   function takes in a node as a parameter; therefore, it is up to the user to pass in a node. This is not particularly useful since the nodes of a linked list
+   should be an implemenative detail - it should not, in other words, be visible to the user. Instead, we would like for the user to pass in a value to the 
+   linked list by extending the append() function, and that value should internally be stored within a node, the process of which should be "behind the curtains".
+   
+   Observe the following:
+        def append(self, data):
+            if self.head == None:
+                new_node = Node(data) 
+                self.head = new_node
+            else:
+                #other logic.. 
+    In the above implementation, if self.head is not set to anything (because the list was empty), then we create a new node called new_node and we pass create
+    an instatiation of the Node object by Node(data) - the full statement is, new_node = Node(Data). So, a node has been created that takes the data passed by 
+    the user. In the case of self.head == None, this new node is the first node in the list. After creating the new node which would evidently be the first node 
+    (since we have entered the above if-block), let us update what the program should consider to be self.head; therefore, we say self.head = new_node 
+    
+    Let us try to access the node 
+    ll = LinkedList() <- created linked list, default, ll.head is None. print(ll.head) would yield "None"
+    ll.append(5) <- passed in data, this data is stored in new_node and since this is the first node created, self.head = new_node, so ll.head = new_node 
+    ll.print(ll.head) <- some would expect "5", but that wouldn't be very rational seeing as how ll.head simply refers to the memory location of the node and 
+                         not the node itself. This would yeild <__main__.Node object at 0x7f40ea7d5cd0> where 0x7f40ea7d5cd0 is the place in memory for the node. 
+    print(ll.head.data) <- refers to the place in memory but also access the data attirbute for the Node class, therefore prints 5. 
+    
+    Our program so far is the following:
+ ------------------ ------
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+#
+class LinkedList:
+    def __init__(self):
+        self.head = None
         
-        
-        
-        
+    def append(self, data):
+        if self.head == None:
+            new_node = Node(data)
+            self.head = new_node
+        else:
+            return
+-----------------------------
+
+    Let us now do one more variation and move onto the else clause. Note that whether or not the node created is the first node or a subsequent node, we have to 
+    create a node regardless. It is not the case that we should create a node only in some cases. The if/else blocks only repersent what our action should be 
+    in the event the newly created node is the first node in the list or a subsequent node. Therefore, it would be better to create the node immediately within
+    the append() function and not exclusively do so in a if / else block - we will leave the if/else block to decide where in the sequence of nodes the newly
+    created node should sit. The append function will look something like this:
+        def append(self, data)
+            new_node = Node(data)
+            if self.head == None:
+                self.head = new_node
+             else:
+                #further logic.. 
+
+    Tackling "further logic.." - the else clause:
+        In the else clause, our approach is to take the already created node and add it to the end of an assumed, existing sequence of nodes. Since linked lists
+        are not indexable, we must traverse through the entire list until we reach the end node. Once we have attached a reference to the end node, 
+        we can establish the following: end_node.next = new_node , so that the end node's "next" pointer points to the newly created node. However, 
+        in order to attain reference to the last node, we have to engage in something called "list traversal" - this algorithim is common:
+            current = self.head 
+                while current != None:
+                    current = current.next 
+         we begin by establishing a temporary node called current, and it is merely a reference to self.head (the head node). 
+         we open a while loop that states: while this node's reference is not set to "None", keep doing something iteratively. 
+         this is current = current.next -> on each iteration of the while-loop, allow current to refer to the next node in line. As soon as we current refers
+         to "None", that means that the traversal has concluded. Note that while current != None is the same thing as while current:
+     Even though the above is sound, we want to add a minor variation to the condition. Our improvised condition will be:
+     keep doing current = current.next until you reach a node who's current.next is None, that will be the last node. Then, after the while-loop concludes, 
+     current will be set to the last node. We thereby have a reference onto the last node. After current refers to the last node, we can take current's 
+     current.next property and set it equal to the newly created node. Therefore, the newly created node is added to the end of the list. 
+     
+     current = self.head 
+     while current.next != None:
+        current = current.next 
+     current.next = new_node 
+      
+ The program has now matured in the following ways: You will notice the creation of a display() function, this iterates in a similar way described above. 
+    
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+           
+ class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next != None:
+                current = current.next
+            current.next = new_node
+
+     def display(self):
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
+
+ll = LinkedList()
+ll.append(5)
+ll.append(3)
+ll.append(2)
+ll.display()
+
+prints 
+5
+3
+2
+
+
+
         
         
         
