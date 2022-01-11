@@ -1,0 +1,154 @@
+Building a Linked List in Python from Scratch:
+
+**The Node Class**
+
+1) We create a Node class below. Upon creating an instance of the Node class, we'd like for the user to pass data such that it can be stored in the node. 
+    > Note that the __init__ function has to contain "self", and the placeholder for a recieved value called "data" is type-inferenced which is expected. 
+    > self.data = data ensures that the data passed is attached to the object. Note that "data" was not created before the __init__ method, it was simply 
+      introduced as an argument and attached to the object by self.data = data. This is because python infers the creation of these attributes once we express a 
+      statement where their usage is apparent. For instance, "next" was not introduced before the __init__ method; however, the line "self.next = None" 
+      within the __init__ function implies that an attribute, next, is needed. Therefore, Python creates this attribute for us implicitly. 
+      We could, if we wanted to, create a color attribute by stating: "self.color = color" without actually ever having introduced color before this point. 
+    > Note that an attribute need not be passed as an argument for it to be an attribute of the object, either. Attributes passed as an argument are
+      attributes that the programmer expects the user to initalize upon creation of the object. All other attributes are attributes that are implementative details.
+    > We set, by default, self.next = None. As we know, nodes have a "next" property which allows them to point to the next node that immediately follows it. 
+      Upon creation of a singular node, we will set the next property to none, by default, giving our program the oppurtunity to change the node's next value. 
+
+class Node:
+  def __init__(self, data):
+    self.data = data 
+    self.next = None 
+    
+    > We can ensure that our Node class functions as needed. 
+          > Creating a node on the prompt level is as simple as follows:
+                N1 = Node("Jerry") //this creates a node called N1 which stores the value of "Jerry"
+                print(N1.data) //this prints "Jerry"
+           > We can access the next property to see that it is in fact defaulted to "None"
+                print(N1.next) //this prints "None"
+                
+2) We then create a linkedList class. 
+  > Upon creation of the class, we ask ourselves an important question - must the user be expected to pass anything as a parameter upon creation? Since it is not
+    immediately obvious that we should, we will avoid doing so. Note that it was immediately obvious that "data" should be passed to a node upon creation - which
+    is why we passed data as a parameter in the node constructor. 
+  > We introduce - again, without prior establishment - the a head reference. This head reference is attribute of the linkedList class. Surely, a linked list 
+    of any kind should have an attribute (also called a property) that allows a reference to the head node, its own head. Since this is more of an implemenative 
+    detail, we will allow for the head property to be absent from the argument portion of the function definition. 
+   > After attaching the head attribute to the linked list by "self.head =", we ponder what, by default, it should be equal to. Such considerations should be made
+     inside the __init__ method - here, we are allowed to consider what default values can be, should they exist. Upon creating the linked list, it will
+     ideally have a node [* ->] that points to nothing, therefore allowing the program to specify otherwise when applicable. 
+
+class linkedList:
+  def __init__(self):
+    self.head = None 
+  
+3) we add an append() function to the LinkedList definition. This function will take a Node as a parameter called new_node, since that is what we want to 
+   append to the link list. However, before pondering the algorithmic logic for appending a node to the end of a linked list, we must ask ourselves
+   what we should do if the linked list has no elements prior to adding the node we chooe to currently append. You see, if there are no elements 
+   (if the head, self.head, is in fact "None", then the head of the list, self.head, should point to the node we've chosen to add. This allows
+   us to refer to the head node for purposes of things like traversal. 
+   
+   def append(self, new_node):
+     if self.head == None:
+       self.head == new_node 
+      else:
+        //logic 
+        
+        
+    > An important note forward, and proofs:
+      Before moving onto the portion that says //logic, it would be useful to mention a few things by printing certain commands out. 
+      At this point, we have a Node classes that allows us to create nodes with concrete values. Each created node has a value attached to it and a 
+      next property that points to "None" by default. Follow the below sequence to see how to access Nodes and their data from a linked list 
+            We can create a node, N1, with a value of "Jerry" that points to nothing as follows:
+             N1 = Node("Jerry")
+            We can access the data point by 
+            print(N1.data) //prints Jerry 
+            We can then create a linked list by 
+            ll = LinkedList() 
+            We can use the append function to add a node to the linked list 
+            ll.append(N1) 
+            We enter the append function logic and since self.head == None, we set self.head, the head of the link list, equal to N1. 
+            print(ll.head)
+            We recieve the following: <__main__.Node object at 0x7fda9e469ee0>
+            ll.head is printing out the location to N1, the now head of the linked list. It is not printing out "Jerry" because we have yet to access 
+            the data associated with the reference. If we print (ll.head.data), then we are in effect doing N1.data which concludes to "Jerry". 
+            
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+   Where you left out yesterday (successful implementation)     
+        
+        class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+#
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, new_node):
+        if self.head == None:
+            self.head = new_node
+        else:
+            #traverse until you get to the end of the list, and then make that end-node's "next" property point to the
+            #node you're adding
+            current = self.head
+            while current != None:
+                if current.next == None:
+                    current.next = new_node
+                    break
+                current = current.next
+
+    def print(self):
+        current = self.head
+        while current != None:
+            print(current.data)
+            current = current.next
+
+N1 = Node("Jerry")
+N2 = Node("Mary")
+N3 = Node("Micheal")
+ll = LinkedList()
+ll.append(N1)
+ll.append(N2)
+ll.append(N3)
+
+ll.print()
+
+
+    
+    
+    
+    
+    
+    
