@@ -279,10 +279,9 @@ class LinkedList:
         if self.head == None:
             self.head = new_node
         else:
-            temp = self.head
+             new_node.next = self.head
             self.head = new_node
-            self.head.next = temp
-            del temp
+
 
     def length(self):
         current = self.head
@@ -328,8 +327,8 @@ print("--------")
 ll.display()
         
         
-        
-        
+ While the above implementation may not be robust, the below implementation is:
+ https://stackabuse.com/linked-lists-in-detail-with-python-examples-single-linked-lists/
         
         
         
