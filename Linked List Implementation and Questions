@@ -153,7 +153,6 @@ class LinkedList:
  The program has now matured in the following ways: You will notice the creation of a display() function, this iterates in a similar way described above. 
  Remember that append() and display() incurs a linear cost, in that it runs in order of N, O(N)
     
-
 class Node:
     def __init__(self, data):
         self.data = data
@@ -189,7 +188,6 @@ prints
 5
 3
 2
-
 
 Implementing prepend(): adding an element to the head. 
 The function prepend is tasked with assigning a new head to the linked list. In haste, we might say that this would be a matter of assigning self.head = new_node,
@@ -227,8 +225,6 @@ Method to pass in an index and print data at that index:
            current = current.next
         print(current.data)
         
- 
-
    > def get(self, index):
         if index >= self.length():
             print("Invalid Index")
@@ -282,7 +278,6 @@ class LinkedList:
              new_node.next = self.head
             self.head = new_node
 
-
     def length(self):
         current = self.head
         count = 0
@@ -325,14 +320,7 @@ ll.display()
 ll.erase(2)
 print("--------")
 ll.display()
-        
-        
- While the above implementation may not be robust, the below implementation is:
- https://stackabuse.com/linked-lists-in-detail-with-python-examples-single-linked-lists/
-        
-        
-        
-        
+               
 Where you left off, implementing insertion by yourself:
 
 class Node:
@@ -395,17 +383,26 @@ class LinkedList:
             current = current.next
         current.next = current.next.next
 
-    def insert(self, index, data):
-        new_node = Node(data)
-        itr = 0
-        current = self.head
-        while itr != index - 1:
-            current = current.next
-            itr += 1
-        #we know that this brings us to 1 minus the index of insertion
-        temp = current.next
-        current.next = new_node
-        new_node.next = temp
+    >>> this is a new method. Insert finds the index of the node that the index specified. An iterator counts and matches where this index is
+        Note that in the process, we are setting current to current.next - by the time the loop concludes, current would be referencing the node prior to 
+        insertion. We would ideally like to set current.next = new_node; 
+        we are setting current equal to current.next.    
+        
+            def insert(self, index, data):
+            new_node = Node(data)
+            if index == 0:
+                new_node.next = self.head
+                self.head = new_node
+            else:
+                itr = 0
+                current = self.head
+                while itr != index - 1:
+                    current = current.next
+                    itr += 1
+                #we know that this brings us to 1 minus the index of insertion
+                temp = current.next
+                current.next = new_node
+                new_node.next = temp
 
 ll = LinkedList()
 ll.append("Jerry")
@@ -418,25 +415,43 @@ print("------after inserting Sarah at index 2-----")
 ll.insert(2, "Sarah")
 ll.display()
 
+   
+ While the above implementation may not be robust, the below implementation is. This file was provided for you to attain a working knowledge 
+ of linked lists and nodes in python. The above solution is not entirely efficent.
+ Refer to the link below for particular operations whether it be insertion, deletion, append, prepend, find, etc. 
+ https://stackabuse.com/linked-lists-in-detail-with-python-examples-single-linked-lists/
+        
+
+Linked List Question 1: https://leetcode.com/problems/remove-nth-node-from-end-of-list/submissions/
+
+Solution 1: 
+Create dummy node initalized to -1. 
+Dummy's "next" pointer will point to the head of the linked list 
+Move B n+1 nodes into the list. (for in range) (common list traversal pattern, node = node.next on each iteration)
+Move both pointers in tadem (A = A.next, B = B.next).. common list traversal pattern. 
+B will hit None and when it does, A will be one prior to the target node that we want to delete. 
+After while-loop concludes, A.next = A.next.next to erase references to 
+class Solution(object):
+    def removeNthFromEnd(self, head, n):
+        dummy = ListNode(-1) 
+        dummy.next = head 
+        A = dummy 
+        B = dummy 
+        for i in range(n + 1):
+            B = B.next 
+        while B != None:
+            A = A.next 
+            B = B.next 
+        A.next = A.next.next 
+        return dummy.next
 
 
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 
-    
-    
-    
-    
+
+
+
+
+
+
+
