@@ -333,7 +333,94 @@ ll.display()
         
         
         
-        
+Where you left off, implementing insertion by yourself:
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+#
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next != None:
+                current = current.next
+            current.next = new_node
+
+    def prepend(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+
+    def length(self):
+        current = self.head
+        count = 0
+        while current != None:
+            count += 1
+            current = current.next
+        return count
+
+    def display(self):
+        current = self.head
+        while current:
+            print(current.data)
+            current = current.next
+
+    def get(self, index):
+        if index >= self.length():
+            print("Invalid Index")
+        else:
+            current = self.head
+            itr = 0
+            while itr != index:
+                itr += 1
+                current = current.next
+            return current.data
+
+    def erase(self, index):
+        current = self.head
+        itr = 0
+        while itr != index-1:
+            itr += 1
+            current = current.next
+        current.next = current.next.next
+
+    def insert(self, index, data):
+        new_node = Node(data)
+        itr = 0
+        current = self.head
+        while itr != index - 1:
+            current = current.next
+            itr += 1
+        #we know that this brings us to 1 minus the index of insertion
+        temp = current.next
+        current.next = new_node
+        new_node.next = temp
+
+ll = LinkedList()
+ll.append("Jerry")
+ll.append("Marry")
+ll.append("Matthew")
+ll.append("Kerry")
+print("----before inserting Sarah at index 2----")
+ll.display()
+print("------after inserting Sarah at index 2-----")
+ll.insert(2, "Sarah")
+ll.display()
+
+
+
+
         
         
         
