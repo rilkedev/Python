@@ -423,6 +423,17 @@ ll.display()
  Refer to the link below and the solution provided below: 
  https://stackabuse.com/linked-lists-in-detail-with-python-examples-single-linked-lists/
  
+ Starting template:
+ class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        
+ 
 >> Append Method:
    -------------
     def append(self, data):
