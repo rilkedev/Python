@@ -415,12 +415,120 @@ print("------after inserting Sarah at index 2-----")
 ll.insert(2, "Sarah")
 ll.display()
 
-   
- While the above implementation may not be robust, the below implementation is. This file was provided for you to attain a working knowledge 
- of linked lists and nodes in python. The above solution is not entirely efficent.
- Refer to the link below for particular operations whether it be insertion, deletion, append, prepend, find, etc. 
+=================================================================================================================================================================   
+ The above implementation is by no means the final implementation. Furthermore, it is not entirely efficent in its own right. A revised, checked, and final 
+ implementation is provided below. The above implementation was made to allow you to have an idea as to how nodes and linked lists work. Refer to
+ the final implementation provided below and from the following article from which it was sourced. 
+ 
+ Refer to the link below and the solution provided below: 
  https://stackabuse.com/linked-lists-in-detail-with-python-examples-single-linked-lists/
+ 
+>> Append Method:
+   -------------
+    def append(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next != None:
+                current = current.next
+            current.next = new_node
+            
+Explanation: 
+Create a function definition that passes a datapoint. Create a new node called new_node and pass the datapoint. This is done by new_node = Node(data). 
+The logic for this function is divided into a binary if-else branch. One case checks if the head of the list is empty, the other case appends the node
+to the end of the list in the event the list is not empty. If the list is empty, the self.head attribute for the linked list is set to the new_node such that the
+program knows what to consider as the head of the list. This logic is consolidated by saying, if self.head == None:, self.head = new_node. Here on out, the
+program will refer to this node as the head. The else clause handles the scenerio where the if clause was falsified. In the event self.head is not None, the
+program understands that the newly created node should instead be appending to the list. The logic is that if it is able to find the last node in the list, 
+then it can set that node's "next" property to the newly created node. This would, in effect, make the newly created node the last node in the list. 
+We achieve this by something called "list traversal".. we explain the list traversal algorithim below:
+
+current = self.head        <= attaches a references to the head of the list 
+while current != None:     <= while the current reference does not point to None (which it will at the end of the list)
+    current = current.next <= keep moving the current reference forward by referring itself to the next node in the sequence 
+
+[] [] [] [] [] [] -> None     [] [] [] [] [] [] -> None   [] [] [] [] [] [] ->
+^                                ^                                          ^  
+current                         current                                     current    
+
+Note that the code snippet provided above is not the the traversal technique used in the append() method. Essentially, the snippet provided above is a basic 
+traversal pattern until the "current" reference hits null. However, what if we want to traverse only until the last node? Or, perhaps the second to last node?
+In other words, after the while loop terminates, instead of current referring to None, it should instead refer to the last node. The solution to this problem 
+is achieved by making a slight tweak: instead of saying while current != None, we can instead say while current.next != None. What this does is it forces
+the while-loop to terminate when current.next = None, which will only happen at the last node. Therefore, after the while-loop terminates, current holds a 
+reference to the last node. Once current refers to the last node, we can set current.next = new_node which would be akin to setting last_node.next = new_node 
+
+>> Display Method:
+   --------------
+    def display(self):
+        if self.head == None:
+            print("Linked list is empty")
+            return
+        else:
+            current = self.head
+            while current != None:
+                print(current.data)
+                current = current.next
+The display method checks if the list is empty (which is expresed by self.head == None), we simply return a print statement summarizing the error. 
+Otherwise, since we want to print ALL contents of the linked list, we use while current != None instead of while current.next != None; on each iteration, 
+in addition to doing current = current.next to facilate the updating of the current pointer, we print the data of the current reference. (current.data) 
+
+>> Insert at Beginning Method:
+    
+    def insert_at_beginning(self, data):
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+   The algorithimic logic for this question is fairly straightforward. We create a new node in memory that doesn't point to anything. Instead, it merely holds
+   the data that was passed by the user. This is expected since the class definition of a node includes a "next" attribute which, by default, points to None. 
+   In the event self.head is something other than None, we set the new_node's "next" property equal to head of the list (self.head). After new_node's reference 
+   is pointing to the head of the list, we update what the program should consider to be the head by stating "self.head = new_node" 
+   
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
         
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 Linked List Question 1: https://leetcode.com/problems/remove-nth-node-from-end-of-list/submissions/
 
