@@ -1,1 +1,42 @@
-He 
+List Exercises:
+
+>> Create a function that passes a list as a parameter and sums all elements of the given list 
+Solution 1:
+def sum_list(my_list):
+    sum = 0
+    for item in my_list:
+        sum += item
+    return sum
+
+list = [3, 2, 1, 2]
+print(sum_list(list))
+
+Solution 2:
+
+def sum_list(my_list):
+    return sum(my_list)
+
+list = [3, 2, 1, 2]
+print(sum_list(list))
+
+
+>> Create a function that passes a list and an index as a parameter and sums all elements after the index specified 
+
+Solution 1:
+
+def sum_after_xth(my_list, index):
+    return sum(my_list[index:])
+
+my_list = [4, 2, 1, 3]
+print(sum_after_xth(list, 2))
+
+
+>> Create a function that takes two parameters, a and b, where a signifies the starting index and the ending index of the sum of elements that should be returned 
+Solution:
+def sum_of_partial(a, b, list):
+        return sum(list[a:b])
+
+list = [4, 2, 3, 1, 4]
+print(sum_of_partial(1, 3, list))
+
+
