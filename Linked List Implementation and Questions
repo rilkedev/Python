@@ -523,8 +523,11 @@ Explanation: if there is a dummy node, then moving a reference beginning at the 
  
  
  
- 
- 
+ Note that the above implementations of a linked list implement an append method which is an O(N) operation. To append, we have to traverse the entire list
+ until current.next != None, after which we set current.next = new_node. However, this implementation would be more efficent O(1) if we could have the append
+ method be a simple rewiring operation and we could append without having to traverse the entire list. This can be accomplished by keeping track of the tail node
+ so that on each append() call, we can simply set self.tail.next = new_node, and then update what the program considers to be the tail by saying 
+ self.tail = new_node 
  
  =================================================== LEETCODE AND OTHER QUESTIONS FROM OTHER SITES =============================================================
 Linked List Question 1: https://leetcode.com/problems/remove-nth-node-from-end-of-list/submissions/
@@ -550,9 +553,9 @@ class Solution(object):
         A.next = A.next.next 
         return dummy.next
         
-        
-        
+                   
 Linked List Question 2: https://leetcode.com/problems/merge-two-sorted-lists/submissions/ 
+Merge Sorted List: 
 
 class Solution(object):
     def mergeTwoLists(self, list1, list2):
@@ -577,14 +580,3 @@ class Solution(object):
             
         return dummy.next
         
-
-
-
-
-
-
-
-
-
-
-
