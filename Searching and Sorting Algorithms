@@ -44,6 +44,26 @@ if __name__ == "__main__":
     list.sort()
     result = binary_search(list, 5)
     print(str(result))
+----------------------------    
+    Alternative solution:
+    
+    def binary_search(list, target):
+    first = 0
+    last = len(list) - 1
+
+    while first <= last:
+        #reposition mid
+        mid = (first + last)//2
+
+        if list[mid] == target:
+            return mid
+        else:
+            if list[mid] < target:
+                first = mid + 1
+            elif list[mid] > target:
+                last = mid - 1
+    return None
+----------------------------
 
 Before covering the recursive approach, watch this video on an introduction to recursion: https://www.youtube.com/watch?v=9bsK03SlmNM&t=70
 
