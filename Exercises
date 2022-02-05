@@ -40,3 +40,64 @@ list = [4, 2, 3, 1, 4]
 print(sum_of_partial(1, 3, list))
 
 
+#>>create a method that adds everything after the second index, assume the length of the list is > 2
+def sum2(list):
+    sum = 0
+    for k in range(2, len(list)):
+        sum = sum + list[k]
+    return sum
+
+
+#>>create method that takes in a and b where a and b are indicies within an array - sum elements from a to b
+#the length of the array will always be greater than 1, however, ensure that the user does not pass an incidies b where b exceeds 
+#the number of elements in the array - throw an array saying "b is not a valid indicies" if this is the case
+def sum_sub(list, a, b):
+    if b > len(list)-1:
+        print("b is not a valid indicies")
+        return
+    result = sum(list[a:b+1])
+    return result
+
+val = [4, 2, 4, 1,4, 2, 4, 1,4, 2, 4, 1]
+result = sum_sub(val,2, 14)
+print(result)
+
+
+>Q: #create a function that takes a list and a number as a parameter and 
+# prints the index at which the number occurs in the list 
+
+def display_num(list, val):
+    result = 0
+    for k in range(len(list)):
+        if list[k] == val:
+            return k
+
+values = [4, 4, 2, 5, 1]
+result = display_num(values, 5)
+print(result)
+
+
+dbt
+#Q>>create a method that makes a distinction between even and odd elements stored within the list.
+#create two seperate lists where the first stores all odd elements; while the other stores all even elements
+#return a singular list that contains both even and odd lists.
+#INPUT: [4, 2, 4, 1, 5, 2]
+#OUTPUT: [ [4, 2, 4, 2] , [1,5] ]
+
+def even_odd(list):
+    list_even = []
+    list_odd = []
+    result = []
+    for item in list:
+        if item % 2 == 0:
+            list_even.append(item)
+        else:
+            list_odd.append(item)
+    result.append(list_even)
+    result.append(list_odd)
+    return result
+
+my_list = [4, 2, 5, 6, 2, 1]
+result = even_odd(my_list)
+print(result)
+
