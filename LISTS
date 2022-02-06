@@ -422,8 +422,21 @@ OUTPUT: [ [4, 2, 4, 2] , [1,5] ]
 					    list = ["Berry", "Matthew_Chestnut", "Julia", "Cynthia"]
 					    print(longest_word(list))
 
-			
-  
+
+>> N is an integer, return a list that has D digits from the end of the input integer. Input: 45232 d = 3 .. output: [2,3,2]
+def solution(n,d):
+	    if d > len(str(n)):
+		return n
+	    elif d <= 0:
+		return []
+	    result = []
+	    n = str(n)
+	    for index in range(len(n)-d, len(n)):
+		result.append(int(n[index]))
+	    return result
+	n = 1343
+	print(solution(n,2))			
+
   
   
   
