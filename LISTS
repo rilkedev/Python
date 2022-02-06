@@ -159,9 +159,23 @@ Both first and second entry achieve the same thing (refer to first entry in colu
 	list = [4,2,3,1]
 	print(list[0: -1])
 	//prints [4,2,3]
+---------------------------------------------------------------------------------------------
+ENUMERATE FUNCTION:
+>>If you wanted to print items and index alongside each other, you would probably do it like this
+names = ["Tom", "Julia", "Jacob", "Mary", "Matthew"]
+for index in range(len(names)):
+    print(index, names[index])
+>>Or, perhpas you can use a a for item in list loop:
+index = 0
+for item in names:
+    print(item, index)
+    index += 1
+>>But, enumerate allows you to do this - specify "for index, item in enumerate(list_name)" and do print(index, item)
+names = ["Tom", "Julia", "Jacob", "Mary", "Matthew"]
+for index, item in enumerate(names):
+    print(index, item)
 
-
-
+----------------------------------------------------------------------------------------------
 
 
 
