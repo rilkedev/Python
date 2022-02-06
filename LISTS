@@ -89,6 +89,12 @@ List:
 > Printing multipes
 	for x in range(2, 30, 3):
 	 print(x)
+	 
+> Access last element 
+	list = [4,2, 3, 2,1]
+	print(list[len(list)-1])
+> Access first element 
+	print(list[0])
 	
 		
 
