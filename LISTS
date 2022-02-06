@@ -94,6 +94,15 @@ List:
 
 Iterating Over Lists and Range details O(N) 
 ---------------------------
+Note: alternative way to iterate specified number of times (N)
+
+	def print_hi(n):
+	    while n > 0:
+		print("hi")
+		n = n - 1
+	print_hi(3)
+
+
 >Use for each loop to iterate over a sequence (list)
 	seq = ["girl", "boy", "hybrid"]
 	for item in seq:
