@@ -365,8 +365,12 @@ OUTPUT: [ [4, 2, 4, 2] , [1,5] ]
 	my_list = [4, 2, 5, 6, 2, 1]
 	result = even_odd(my_list)
 	print(result)
-				
-				
+	
+	
+> Create function that returns a list of ascending numbers starting from 1 up to the last element in the original list 
+  input: [1, 5, 2, 4]
+  output: [1, 2, 3, 4]
+  
 >> NOTES ABOUT DISTINCTION BETWEEN FOR-EACH AND STANDARD FOR-LOOP AND SOME NUANCES TO CONSIDER 
 Iterating over lists and adding elements optimizations:
 
