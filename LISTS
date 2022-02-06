@@ -404,9 +404,25 @@ OUTPUT: [ [4, 2, 4, 2] , [1,5] ]
 		result.append(len(words[index]))
 	    return max(result)
           
- 		>> can you do it without using the max(result)? This birings up a question. How do we find the maximum number in a list w/o using max? 
-  
-  
+	.... can you do it without using the max(result)? This brings up a question. How do we find the maximum number in a list w/o using max? 
+					max = my_list[0]
+					for index in range(1, len(list)):
+					    if my_list[index] > max:
+						max = my_list[index]
+					return max
+	... in the context of this problem
+
+					    def longest_word(words):
+						max = len(words[0])
+						for index in range(1, len(list)):
+						    if len(words[index]) > max:
+							max = len(words[index])
+						return max
+
+					    list = ["Berry", "Matthew_Chestnut", "Julia", "Cynthia"]
+					    print(longest_word(list))
+
+			
   
   
   
