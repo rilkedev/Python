@@ -371,6 +371,49 @@ OUTPUT: [ [4, 2, 4, 2] , [1,5] ]
   input: [1, 5, 2, 4]
   output: [1, 2, 3, 4]
   
+	  def asc(list):
+	    result = []
+	    last = list[len(list)-1]
+	    for index in range(1, last+1):
+		result.append(index)
+	    return result
+
+	list=[4, 2, 4, 10]
+	result = asc(list)
+	print(result)
+
+> Complete the function that takes one argument, a list of words, and returns the length of the longest word in the list.
+	def longest(words):
+	    result = [] 
+	    for index in range(len(words)):
+		result.append(len(words[index]))
+	    return max(result)
+          
+ 		>> can you do it without using the max(result)? This birings up a question. How do we find the maximum number in a list w/o using max? 
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 >> NOTES ABOUT DISTINCTION BETWEEN FOR-EACH AND STANDARD FOR-LOOP AND SOME NUANCES TO CONSIDER 
 Iterating over lists and adding elements optimizations:
 
