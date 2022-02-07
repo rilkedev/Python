@@ -1,11 +1,7 @@
 ========================================================================================================================
 Python has a series of "sequences" objects which include tuples, lists, and strings. All of these support indexing in that each element has an index 
 which can be referenced. 
-name = "John"
-J o h n
-0 1 2 3 
-my_list = [4, 3, 2, 3] 
-	   0  1  2  3
+
 	   
 Lists:
 
@@ -78,7 +74,7 @@ List:
 	numbers = seq.copy() 
 	print(numbers)
 		
-> Can remove by typing element directly
+> Can remove by typing element  directly
     names = ["Jim", "Mariam", "Ashley"]
     names.remove("Jim")
     print(names)
