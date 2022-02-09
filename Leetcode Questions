@@ -1,0 +1,53 @@
+Valid Anagram (#242)
+  Solution:
+    def isAnagram(s, t):
+      countS = {}
+      countT = {}
+      if len(s) != len(t):
+          return False
+
+      for i in range(len(s)):
+          countS[s[i]] = countS.get(s[i], 0) + 1
+          countT[t[i]] = countT.get(t[i], 0) + 1
+      return countS == countT
+      
+    Explanation:
+
+    What our code intends to do is it iterates for the length of the string - in this case, name.
+    It begins by asserting freq[name[i]] where name[i] is any given character in the input string 'name'. By freq[name[i]] it is accessing
+    the value assosiated with the name[i] key. So, name[i] could be could be "T", and freq[name[i]] would access the value associated with "T", like
+    2, for instance. So, dictName[key] accessess the value associated with a key just as listName[index] access the value stored at an index in a
+    list. The intention is to iterate through the entire string after which we would like to add 1 to the value that the key stores.
+    The pseduo code for this may say:
+    iterate for the length of the string name = for i in range(len(name)):
+    access the value stored at this key = freq[name[i]]
+    add one to whatever the value at this key was before
+    freq[name[i]] = freq[name[i]] + 1 (accumlator pattern).
+    this may be achieved by
+     for i in range(len(name)):
+        freq[name[i]] = freq[name[i]] + 1
+    However, this code presents a major issue.
+    Suppose name[i] = "j" and we have not passed by a j before
+        for i in range(len(name)):
+            freq[j] = freq[j] + 1 <- this line says to add one to the value stored at the key j. This presents a problem since the value at j
+                                     does not yet exist. We are then instructing the algorithim to add one to a non-existent value.
+
+        Introducing the dictName.get(__,__) method.
+        dictName.get() is a method that, in functionality, does exactly what the freq[name[i]] does on any given iteration - it access the value
+        stored with a key. So, for freq = {"a":, 4}... asserting freq.get("a") will return 4.
+        However, why we have introduced dictName.get(key) is because of another parameter that it allows. In the event the parameter does not exist,
+        as in, in the event a key specified in the dict.get() function DNE, you can add a second parameter that defaults the value.
+        So, if I have freq = {} and I choose to create a key and initialize to the value of another key that has yet to exist by
+        freq["a"] = freq.get("b", 2), it will set a key "a" to have the value of 2.
+        We can therefore optimize by:
+
+        the value stored at that key should be the value stored at that key plus 1. If the key doesn't exist already, the value at that key will default
+        to 0. However, since we add one to it regardless, each new key will be defaulted to 1. In the event the key already exists, the code
+        will not default the value and it will merely get the value of the key by freq.get() and add 1 to it.
+
+        name = "john"
+        freq ={}
+        freq[name[0]] = freq.get(name[0], 0)
+        print(freq)
+
+         
