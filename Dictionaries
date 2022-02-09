@@ -1,0 +1,255 @@
+#Dictionaries (equivalent of Java hashmap). They are key-value pairs. They are unordered (cannot be sorted) - but can be converted to lists
+#and then sorted, but cannot be sorted itself. Every value will have a key associated with it.
+#Key should be an immutable type. (int)
+#https://www.youtube.com/watch?v=daefaLgNkw0
+
+# #Create new dicitonary: dicts consist of key-value pairs. Can also print dicts. by print(dict_name)
+# data = {1:"Ram", 2:"Jacob", 3:"Holly",4:"Amy"}
+# print(data)
+# #outputs {1: 'Ram', 2: 'Jacob', 3: 'Holly', 4: 'Amy'}
+
+# Access of a value using key
+# dict = {"name": "jacob", "age": 24, "networth": 400}
+# val = dict["name"]
+# print(val)
+#outputs jacob
+
+# #Can also access data in dict. by using nameOfDic.get(key)
+# data = {1:"Ram", 2:"Jacob", 3:"Holly",4:"Amy"}
+# val = data.get(2)
+# #>val2 will access a key that is non-existent, if you do a .get command on this, it will throw an error. You can instead specify what it
+# #should depict in the event a key is non-existent. Can be string, int, etc.
+# val2 = data.get(5, "Key does not exist")
+# print(val)
+# print(val2)
+# #outputs Jacob
+# #outputs Key does not exist
+
+# #Adding a key-value pair: dictName[key] = value
+# dict = {"age": 32,"name":"Amy","race":"Indian"}
+# dict["height"] = 200
+# print(dict)
+# #outputs: {'age': 32, 'name': 'Amy', 'race': 'Indian', 'height': 200}
+
+# #Length of dictonariy
+# dict = {"age": 32,"name":"Amy","race":"Indian"}
+# print(len(dict))
+# #outputs 3
+
+
+#Print keys, values, or both
+# dict = {"age": 32,"name":"Amy","race":"Indian"}
+# print(dict.keys())
+# print(dict.values())
+# print(dict.items())
+# #output:
+# dict_keys(['age', 'name', 'race'])
+# dict_values([32, 'Amy', 'Indian'])
+# dict_items([('age', 32), ('name', 'Amy'), ('race', 'Indian')])
+
+
+# #Iterating through dicts
+# #Iterate to get keys
+# dict = {"age": 32,"name":"Amy","race":"Indian"}
+# for key in dict:
+#     print(key, dict[key])
+# #outputs
+# # age 32
+# # name Amy
+# # race Indian
+
+#Prints all keys in dict just as "for item in list" prints all items in for loop. Best to probably refer to it as "key" instead of k
+#Can also use "k" here, but that's misleading because k is not an iterator. It refers to the actual key.
+# dict = {"a":4, "b": 2, "m": 5}
+# for key in dict:
+#     print(key)
+
+# #Prints key and value. Rememeber that in "for k in dict": k will refer to key.
+# count = {"a":3,"b":2,"c":5,}
+# for key in count:
+#     print(key, count[key])
+# #prints
+# # a 3
+# # b 2
+# # c 5
+
+# #you can also access and update values within a for-loop. Instead of "index", you will have "key" - you can name this anything though.
+#The main thing to remember about dicts is that dict[myKey] = val associated with dict.
+# my_dict = {
+#     'a':4,
+#     'b':2,
+#     'c':1,
+# }
+# for key in my_dict:
+#     if my_dict[key] == 4:
+#         my_dict[key] = 5
+# print(my_dict)
+# #prints {'a': 5, 'b': 2, 'c': 1}
+
+# #Make each character of an string a key and assign it a value of 1
+#It is essential to remember that an empty dict was populated here. So when you do my_dict[aKey] = something, both of these are then created.
+# my_dict = {}
+# my_string = "John"
+# for k in range(len(my_string)):
+#     my_dict[my_string[k]] = 1
+# print(my_dict)
+# #result {'J': 1, 'o': 1, 'h': 1, 'n': 1}
+
+#In this case, i represents a key value and the assignment, 4, represents the value for each key.
+# dict = {}
+# for i in range(5):
+#     dict[i] = 4
+# print(dict)
+# #outputs {0: 4, 1: 4, 2: 4, 3: 4, 4: 4}
+
+# #1.1 When you have dict[someKey] independantly it references someKey and prints value assosciated with someKey.
+# #1.2 But when you dict[someKey] = Y, it assigns someKey to assosciate with a new value, Y.
+# dict = {"A": 5, "B":2}
+# #1.1
+# print(dict["A"])
+# #1.2
+# dict["A"] = 2
+
+# #Another fact to remember is that dicts do not store duplicate values. So if there are two m's in Tommy, then only one key with m will be had.
+# dict = {}
+# name = "tommy"
+# for k in range(len(name)):
+#     dict[name[k]] = 1
+# print(dict)
+# #Outputs {'t': 1, 'o': 1, 'm': 1, 'y': 1} - see how two entries of 'm':1 were not stored?
+
+
+# #Notice how in the following code changing name[3] to another value does not create another instance of "m" with another value, it updates
+# #the value that was there.
+# dict = {}
+# name = "tommy"
+# dict[name[0]] = 4
+# dict[name[1]] = 5
+# dict[name[3]] = 6
+# dict[name[3]] = 2
+# print(dict)
+# #Output: {'t': 4, 'o': 5, 'm': 2}
+
+# #Create a dictionary that stores each letter as a key, and a value that represents the frequency it has appeared.
+# #For item in name, if the item is stored as a key in the freq dictionary, add one to the value field of that key referenced by item.
+# #Otherwise, since it has not appeared in the freq dictionary, set it equal to 1.
+# name = "Jerry"
+# freq = {}
+# for item in name:
+#     if item in freq:
+#         freq[item] += 1
+#     else:
+#         freq[item] = 1
+# print(freq)
+# #Outputs: {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+# #You can do the above with a different type of loop. The purpose, I suppose, is to loop as many times as there are chars in the string.
+# #However, since you've introduced
+# name = "Jerry"
+# freq = {}
+# for k in range(len(name)):
+#     if name[k] in freq:
+#         freq[name[k]] += 1
+#     else:
+#         freq[name[k]] = 1
+# print(freq)
+# #Outputs {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+# #Function that returns if or if not two strings are an anagram of each other (brute, not ideal)
+# def anagram(s, s2):
+#     countS = {}
+#     countS2 = {}
+#     if len(s) != len(s2):
+#         return False
+#     else:
+#         for k in range(len(s)):
+#             if s[k] in countS:
+#                 countS[s[k]] += 1
+#             else:
+#                 countS[s[k]] = 1
+#             if s2[k] in countS2:
+#                 countS2[s2[k]] += 1
+#             else:
+#                 countS2[s2[k]] = 1
+#     return countS == countS2
+# string = "mary"
+# string2 = "rmay"
+# result = anagram(string, string2)
+# print(result)
+
+
+# #1.1 When you have dict[someKey] independantly it references someKey and prints value assosciated with someKey.
+# #1.2 But when you dict[someKey] = Y, it assigns someKey to assosciate with a new value, Y.
+# dict = {"A": 5, "B":2}
+# #1.1
+# print(dict["A"])
+# #1.2
+# dict["A"] = 2
+
+# #Another fact to remember is that dicts do not store duplicate values. So if there are two m's in Tommy, then only one key with m will be had.
+# dict = {}
+# name = "tommy"
+# for k in range(len(name)):
+#     dict[name[k]] = 1
+# print(dict)
+# #Outputs {'t': 1, 'o': 1, 'm': 1, 'y': 1} - see how two entries of 'm':1 were not stored?
+
+
+# #Notice how in the following code changing name[3] to another value does not create another instance of "m" with another value, it updates
+# #the value that was there.
+# dict = {}
+# name = "tommy"
+# dict[name[0]] = 4
+# dict[name[1]] = 5
+# dict[name[3]] = 6
+# dict[name[3]] = 2
+# print(dict)
+# #Output: {'t': 4, 'o': 5, 'm': 2}
+
+# #Create a dictionary that stores each letter as a key, and a value that represents the frequency it has appeared.
+# #For item in name, if the item is stored as a key in the freq dictionary, add one to the value field of that key referenced by item.
+# #Otherwise, since it has not appeared in the freq dictionary, set it equal to 1.
+# name = "Jerry"
+# freq = {}
+# for item in name:
+#     if item in freq:
+#         freq[item] += 1
+#     else:
+#         freq[item] = 1
+# print(freq)
+# #Outputs: {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+# #You can do the above with a different type of loop. The purpose, is to loop as many times as there are chars in the string.
+# #However, since you've introduced k as a variable, which may be useful in some cases, you must now now reference "item" or "key" as they key.
+# Each character key will be name[k] or name[i]
+# name = "Jerry"
+# freq = {}
+# for k in range(len(name)):
+#     if name[k] in freq:
+#         freq[name[k]] += 1
+#     else:
+#         freq[name[k]] = 1
+# print(freq)
+# #Outputs {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+# #Function that returns if or if not two strings are an anagram of each other (brute, not ideal)
+# def anagram(s, s2):
+#     countS = {}
+#     countS2 = {}
+#     if len(s) != len(s2):
+#         return False
+#     else:
+#         for k in range(len(s)):
+#             if s[k] in countS:
+#                 countS[s[k]] += 1
+#             else:
+#                 countS[s[k]] = 1
+#             if s2[k] in countS2:
+#                 countS2[s2[k]] += 1
+#             else:
+#                 countS2[s2[k]] = 1
+#     return countS == countS2
+# string = "mary"
+# string2 = "rmay"
+# result = anagram(string, string2)
+# print(result)
