@@ -15,7 +15,15 @@ Valid Anagram (#242)
                 return False 
         return True
       
-    Explanation & Alterations:
+    Explanation, Alterations and Pseudo-Code:
+          >> Pseudo 
+          Establish a dictionary for the frequency of s1 and s2. Dictionary will hold characters as keys and frequency as the value. 
+          Check if length of s1 is not equal to length of s2, means you should return false - cannot be anagram this way. 
+          Iterate through length of any string since both are of equal length. 
+          Store frequency by dictName[key/string[i]] = dictName.get(key/string[i], 0) + 1 for both dictionaries and strings. 
+          Another for-loop, for c in oneOfTheDicts. 
+          If firstDict[c] does not equal secondDict[c]: False. 
+          If loop executes without returning False, return True. 
           >> Alterations 
           For determining whether both dictionaries hold the same values, you can either do 1.1, 1.2, or 1.3 
              -> 1.1 
