@@ -1,4 +1,4 @@
-Valid Anagram (#242)
+Valid Anagram (#242) [STRINGS]
   Solution:
     def isAnagram(self, s, t):
         countS = {}
