@@ -1,53 +1,99 @@
 Valid Anagram (#242)
   Solution:
-    def isAnagram(s, t):
-      countS = {}
-      countT = {}
-      if len(s) != len(t):
-          return False
-
-      for i in range(len(s)):
-          countS[s[i]] = countS.get(s[i], 0) + 1
-          countT[t[i]] = countT.get(t[i], 0) + 1
-      return countS == countT
+    def isAnagram(self, s, t):
+        countS = {}
+        countT = {}
+        if len(s) != len(t):
+            return False
+        
+        for i in range(len(s)):
+            countS[s[i]] = countS.get(s[i], 0) + 1
+            countT[t[i]] = countT.get(t[i], 0) + 1
+        
+        for key in countS:
+            if countS[key] != countT.get(key,0):
+                return False 
+        return True
       
-    Explanation:
+    Explanation & Alterations:
+          >> Alterations 
+          For determining whether both dictionaries hold the same values, you can either do 1.1, 1.2, or 1.3 
+             -> 1.1 
+                return countS == countT 
+             -> 1.2
+                note, this is the intention 
+                for key in countS:
+                  if countS[key] != countT[key] 
+                    return False 
+                return True
+                however, countT[key] may not exist. In other words, a key stored in the first countS record may not be a registered key in the countT record. 
+                so, we use countT.get(key, 0). If the key DNE in the countT, then the value will default to 0 and we will still print False. 
+                for key in countS:
+                  if countS[key] != countT.get(key, 0)
+                    return False 
+                return True
+             -> 1.3 
+                the above can also be achieved with a an for-i-range loop. 
+                for i in range(len(s)):
+                  if countS[s[i] != countT.get[s[i], 0]
+                    return False
+                 return True 
+          >> Explanation 
+          What our code intends to do is it iterates for the length of the string - in this case, name.
+          It begins by asserting freq[name[i]] where name[i] is any given character in the input string 'name'. By freq[name[i]] it is accessing
+          the value assosiated with the name[i] key. So, name[i] could be could be "T", and freq[name[i]] would access the value associated with "T", like
+          2, for instance. So, dictName[key] accessess the value associated with a key just as listName[index] access the value stored at an index in a
+          list. The intention is to iterate through the entire string after which we would like to add 1 to the value that the key stores.
+          The pseduo code for this may say:
+          iterate for the length of the string name = for i in range(len(name)):
+          access the value stored at this key = freq[name[i]]
+          add one to whatever the value at this key was before
+          freq[name[i]] = freq[name[i]] + 1 (accumlator pattern).
+          this may be achieved by
+           for i in range(len(name)):
+              freq[name[i]] = freq[name[i]] + 1
+          However, this code presents a major issue.
+          Suppose name[i] = "j" and we have not passed by a j before
+              for i in range(len(name)):
+                  freq[j] = freq[j] + 1 <- this line says to add one to the value stored at the key j. This presents a problem since the value at j
+                                           does not yet exist. We are then instructing the algorithim to add one to a non-existent value.
 
-    What our code intends to do is it iterates for the length of the string - in this case, name.
-    It begins by asserting freq[name[i]] where name[i] is any given character in the input string 'name'. By freq[name[i]] it is accessing
-    the value assosiated with the name[i] key. So, name[i] could be could be "T", and freq[name[i]] would access the value associated with "T", like
-    2, for instance. So, dictName[key] accessess the value associated with a key just as listName[index] access the value stored at an index in a
-    list. The intention is to iterate through the entire string after which we would like to add 1 to the value that the key stores.
-    The pseduo code for this may say:
-    iterate for the length of the string name = for i in range(len(name)):
-    access the value stored at this key = freq[name[i]]
-    add one to whatever the value at this key was before
-    freq[name[i]] = freq[name[i]] + 1 (accumlator pattern).
-    this may be achieved by
-     for i in range(len(name)):
-        freq[name[i]] = freq[name[i]] + 1
-    However, this code presents a major issue.
-    Suppose name[i] = "j" and we have not passed by a j before
-        for i in range(len(name)):
-            freq[j] = freq[j] + 1 <- this line says to add one to the value stored at the key j. This presents a problem since the value at j
-                                     does not yet exist. We are then instructing the algorithim to add one to a non-existent value.
+              Introducing the dictName.get(__,__) method.
+              dictName.get() is a method that, in functionality, does exactly what the freq[name[i]] does on any given iteration - it access the value
+              stored with a key. So, for freq = {"a":, 4}... asserting freq.get("a") will return 4.
+              However, why we have introduced dictName.get(key) is because of another parameter that it allows. In the event the parameter does not exist,
+              as in, in the event a key specified in the dict.get() function DNE, you can add a second parameter that defaults the value.
+              So, if I have freq = {} and I choose to create a key and initialize to the value of another key that has yet to exist by
+              freq["a"] = freq.get("b", 2), it will set a key "a" to have the value of 2.
+              We can therefore optimize by:
 
-        Introducing the dictName.get(__,__) method.
-        dictName.get() is a method that, in functionality, does exactly what the freq[name[i]] does on any given iteration - it access the value
-        stored with a key. So, for freq = {"a":, 4}... asserting freq.get("a") will return 4.
-        However, why we have introduced dictName.get(key) is because of another parameter that it allows. In the event the parameter does not exist,
-        as in, in the event a key specified in the dict.get() function DNE, you can add a second parameter that defaults the value.
-        So, if I have freq = {} and I choose to create a key and initialize to the value of another key that has yet to exist by
-        freq["a"] = freq.get("b", 2), it will set a key "a" to have the value of 2.
-        We can therefore optimize by:
-
-        the value stored at that key should be the value stored at that key plus 1. If the key doesn't exist already, the value at that key will default
-        to 0. However, since we add one to it regardless, each new key will be defaulted to 1. In the event the key already exists, the code
-        will not default the value and it will merely get the value of the key by freq.get() and add 1 to it.
-
-        name = "john"
-        freq ={}
-        freq[name[0]] = freq.get(name[0], 0)
-        print(freq)
+              the value stored at that key should be the value stored at that key plus 1. If the key doesn't exist already, the value at that key will default
+              to 0. However, since we add one to it regardless, each new key will be defaulted to 1. In the event the key already exists, the code
+              will not default the value and it will merely get the value of the key by freq.get() and add 1 to it.
+              Solving the actual problem entails storing the frequency of 2 strings in 2 seperate dictionaries in this manner. 
+              For string s and t, we will have two different dictionaries, countS = {} and countT = {} respectively. We will iterate over them and store their 
+              frequency as follows:
+              for i in range(len(s): 
+                countS[s[i] = countS.get(s[i],0) + 1 
+                countT[t[i]] = countS.get(t[i],0) + 1
+              Once both dictionaries have been establshed, we need to determine if they are the same. Neetcode does this by opening a for-loop 
+              [for c in countS:] where he iterates through countS and each key on each iteration is repersented by c. He checks to see if the countS[c] value 
+              matches the countT[c] value. So, for a value of c - let's say 'e', he wants to check the value associated with the 'e' key in countS and match 
+              that with the value associated with the 'e' in countT. So he says while iterating, if the key in the countS dictionary does not match the key 
+              in the countT dictionary, print false immediately if that happens for any occurances. Otherwise, if the loop executes without returning false, 
+              then both dictionaries match - return true. Note, saying else: return True within the if is not valid. On the first key-value that matches, 
+              you return true without assessing the rest of the key-values which could hold unmatching keys. 
+              for c in countS:
+                if countS[c] != countT[c]:
+                  print False 
+              return True 
+              A last note here is to understand that when we do 
+                if countS[c] != countT[c], we are assuming a key c within countS[c] also exists within countT[c]. This may not be true. They key 'e' may not 
+                exist in countT if s = "jerry" and t = "jrry".. this will lead to an error. So, we resort to 
+                if countS[c] != countT.get(c, 0) 
+                so that if the key DNE in countT, we default it to 0 to avoid the error and we also mark the check as false. 
+              
+          
+              
 
          
