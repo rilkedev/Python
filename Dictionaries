@@ -1,6 +1,5 @@
-#Dictionaries (equivalent of Java hashmap). They are key-value pairs. They are unordered (cannot be sorted) - but can be converted to lists
-#and then sorted, but cannot be sorted itself. Every value will have a key associated with it.
-#Key should be an immutable type. (int)
+Dictionaries (equivalent of Java hashmap). They are key-value pairs. They are unordered (cannot be sorted) - but can be converted to lists
+and then sorted, but cannot be sorted itself. Every value will have a key associated with it.
 #https://www.youtube.com/watch?v=daefaLgNkw0
 
 # #Create new dicitonary: dicts consist of key-value pairs. Can also print dicts. by print(dict_name)
@@ -36,7 +35,6 @@
 # print(len(dict))
 # #outputs 3
 
-
 #Print keys, values, or both
 # dict = {"age": 32,"name":"Amy","race":"Indian"}
 # print(dict.keys())
@@ -46,7 +44,6 @@
 # dict_keys(['age', 'name', 'race'])
 # dict_values([32, 'Amy', 'Indian'])
 # dict_items([('age', 32), ('name', 'Amy'), ('race', 'Indian')])
-
 
 # #Iterating through dicts
 # #Iterate to get keys
@@ -118,7 +115,6 @@
 # print(dict)
 # #Outputs {'t': 1, 'o': 1, 'm': 1, 'y': 1} - see how two entries of 'm':1 were not stored?
 
-
 # #Notice how in the following code changing name[3] to another value does not create another instance of "m" with another value, it updates
 # #the value that was there.
 # dict = {}
@@ -177,7 +173,6 @@
 # result = anagram(string, string2)
 # print(result)
 
-
 # #1.1 When you have dict[someKey] independantly it references someKey and prints value assosciated with someKey.
 # #1.2 But when you dict[someKey] = Y, it assigns someKey to assosciate with a new value, Y.
 # dict = {"A": 5, "B":2}
@@ -193,7 +188,6 @@
 #     dict[name[k]] = 1
 # print(dict)
 # #Outputs {'t': 1, 'o': 1, 'm': 1, 'y': 1} - see how two entries of 'm':1 were not stored?
-
 
 # #Notice how in the following code changing name[3] to another value does not create another instance of "m" with another value, it updates
 # #the value that was there.
