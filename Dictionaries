@@ -247,3 +247,81 @@ and then sorted, but cannot be sorted itself. Every value will have a key associ
 # string2 = "rmay"
 # result = anagram(string, string2)
 # print(result)
+
+>> Dictionaries as it pertains to solving Valid Anagram #242. 
+
+#Building up to solve valid anagra - this has information about the nature of dicts and how it pertains to solving the question. 
+      # #1.1 When you have dict[someKey] independantly it references someKey and prints value assosciated with someKey.
+      # #1.2 But when you dict[someKey] = Y, it assigns someKey to assosciate with a new value, Y.
+      # dict = {"A": 5, "B":2}
+      # #1.1
+      # print(dict["A"])
+      # #1.2
+      # dict["A"] = 2
+
+      # #Another fact to remember is that dicts do not store duplicate values. So if there are two m's in Tommy, then only one key with m will be had.
+      # dict = {}
+      # name = "tommy"
+      # for k in range(len(name)):
+      #     dict[name[k]] = 1
+      # print(dict)
+      # #Outputs {'t': 1, 'o': 1, 'm': 1, 'y': 1} - see how two entries of 'm':1 were not stored?
+
+      # #Notice how in the following code changing name[3] to another value does not create another instance of "m" with another value, it updates
+      # #the value that was there.
+      # dict = {}
+      # name = "tommy"
+      # dict[name[0]] = 4
+      # dict[name[1]] = 5
+      # dict[name[3]] = 6
+      # dict[name[3]] = 2
+      # print(dict)
+      # #Output: {'t': 4, 'o': 5, 'm': 2}
+
+      # #Create a dictionary that stores each letter as a key, and a value that represents the frequency it has appeared.
+      # #For item in name, if the item is stored as a key in the freq dictionary, add one to the value field of that key referenced by item.
+      # #Otherwise, since it has not appeared in the freq dictionary, set it equal to 1.
+      # name = "Jerry"
+      # freq = {}
+      # for item in name:
+      #     if item in freq:
+      #         freq[item] += 1
+      #     else:
+      #         freq[item] = 1
+      # print(freq)
+      # #Outputs: {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+      # #You can do the above with a different type of loop. The purpose, is to loop as many times as there are chars in the string.
+      # #However, since you've introduced k as a variable, which may be useful in some cases, you must now now reference "item" or "key" as they key.
+      #Each character key will be name[k] or name[i]
+      # name = "Jerry"
+      # freq = {}
+      # for k in range(len(name)):
+      #     if name[k] in freq:
+      #         freq[name[k]] += 1
+      #     else:
+      #         freq[name[k]] = 1
+      # print(freq)
+      # #Outputs {'J': 1, 'e': 1, 'r': 2, 'y': 1}
+
+      # #Function that returns if or if not two strings are an anagram of each other (brute, not ideal)
+      # def anagram(s, s2):
+      #     countS = {}
+      #     countS2 = {}
+      #     if len(s) != len(s2):
+      #         return False
+      #     else:
+      #         for k in range(len(s)):
+      #             if s[k] in countS:
+      #                 countS[s[k]] += 1
+      #             else:
+      #                 countS[s[k]] = 1
+      #             if s2[k] in countS2:
+      #                 countS2[s2[k]] += 1
+      #             else:
+      #                 countS2[s2[k]] = 1
+      #     return countS == countS2
+      # string = "mary"
+      # string2 = "rmay"
+      # result = anagram(string, string2)
+      # print(result)
